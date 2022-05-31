@@ -1,6 +1,6 @@
 # Data_Base-php
 
-Les requette sql de creation et d'insertion de data dans la Base 
+Les requetes sql de creation et d'insertion de data dans la Base 
 
 
 -- phpMyAdmin SQL Dump
