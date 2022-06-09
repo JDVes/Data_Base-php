@@ -1,6 +1,6 @@
 <?php
 // Affichage des donnéés enregistrer
-// print_r($_POST);
+
 
 // déclaration de variable et affection des champs de donné a ces variables 
 
@@ -13,12 +13,19 @@ $terms = filter_input(INPUT_POST,'terms' , FILTER_VALIDATE_BOOLEAN);
 if ( ! $terms) {
     die("terms must be accepted");
 };
-//  connetion a la base de donnée
+//  connection a la base de donnée
 
 $host = "localhost";
 $dbname = "message_id";
 $username = "root";
 $password = "";
+
+
+$name = $_POST["name"]; 
+$message = $_POST["message"];
+$priority = $_POST["priority"]; 
+$type = $_POST["type"];
+
 
 // syntaxe de connetion au serveur de la base de donnée
 
@@ -28,7 +35,11 @@ if (mysqli_connect_errno()) {
     die("connection error : " . mysqli_connect_error());
 }
 
+// bonne connection a la base 
+
 echo "connection successful.";
+
+
 
 $sql = " INSERT INTO container (name,body,priority,type)
                VALUES (?,?,?,?)";
@@ -47,6 +58,10 @@ mysqli_stmt_bind_param($stmt, "ssii",
                         $type);
  mysqli_stmt_execute($stmt);
  
- echo "record saved.";
+ echo "recorsaved.";
 header('location:index.php');
+
+?>
+
+
                     
