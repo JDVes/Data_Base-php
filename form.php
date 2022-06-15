@@ -1,67 +1,67 @@
-<?php
-// Affichage des donnéés enregistrer
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+
+</head>
+
+<body>
+     <!-- <?php //require_once 'add_user.php'?> -->
 
 
-// déclaration de variable et affection des champs de donné a ces variables 
+    <h1>Contacts</h1>
+    
+    <form action="add_user.php" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" name="message" cols="30" rows="10"></textarea>
 
-$name = $_POST["name"];
-$message = $_POST["message"];
-$priority = filter_input(INPUT_POST,'priority' , FILTER_VALIDATE_INT);
-$type = filter_input(INPUT_POST,'type' , FILTER_VALIDATE_INT);
-$terms = filter_input(INPUT_POST,'terms' , FILTER_VALIDATE_BOOLEAN);
+        <label for="priority">priority</label>
+        <select name="priority" id="priority" name="priority">
+            <option value="1" >Low</option>
+            <option value="2" selected >Medium</option>
+            <option value="3" >High</option>
+        </select>
 
-if ( ! $terms) {
-    die("terms must be accepted");
-};
-//  connection a la base de donnée
+        <fieldset>
+            <legend>type</legend>
 
-$host = "localhost";
-$dbname = "message_id";
-$username = "root";
-$password = "";
+            <label for="">
+                <input type="radio" value="1" name="type" checked>
+                complaint
+            </label>
 
+            <br>
 
-$name = $_POST["name"]; 
-$message = $_POST["message"];
-$priority = $_POST["priority"]; 
-$type = $_POST["type"];
+            <label for="">
+                <input type="radio" value="2" name="type" id="type"> 
+                Suggestion
+            </label>
+        </fieldset>
 
+        <label for="">
+            <input type="checkbox" name="terms" id="case">
+            I agree to the terms and conditions
+        </label>
 
-// syntaxe de connetion au serveur de la base de donnée
+        <br>
 
- $conn = mysqli_connect($host, $username,$password, $dbname);
-
-if (mysqli_connect_errno()) {
-    die("connection error : " . mysqli_connect_error());
-}
-
-// bonne connection a la base 
-
-echo "connection successful.";
-
-
-
-$sql = " INSERT INTO container (name,body,priority,type)
-               VALUES (?,?,?,?)";
-
-$stmt = mysqli_stmt_init ($conn);
-if ( ! mysqli_stmt_prepare($stmt,$sql))
-{
-    die (mysqli_error($conn));
-
-}
-
-mysqli_stmt_bind_param($stmt, "ssii",
-                        $name,
-                        $message,
-                        $priority,
-                        $type);
- mysqli_stmt_execute($stmt);
- 
- echo "recorsaved.";
-header('location:index.php');
-
-?>
+        <button >Send</button>
 
 
-                    
+    </form>
+<form action="">
+
+<button><a href="add_user.php"></a>Afficher</button>
+</form>
+   
+    
+</body>
+
+</html>
