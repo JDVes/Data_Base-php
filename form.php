@@ -11,12 +11,13 @@
 </head>
 
 <body>
-     <!-- <?php //require_once 'add_user.php'?> -->
+      
+     
 
 
     <h1>Contacts</h1>
     
-    <form action="add_user.php" method="post">
+    <form action = "create.php" method="post"> 
         <label for="name">Name</label>
         <input type="text" id="name" name="name">
         <label for="message">Message</label>
@@ -52,13 +53,14 @@
 
         <br>
 
-        <button >Send</button>
+
+        <button name="submit">Send</button>
+        
 
 
     </form>
 <form action="">
-
-<button><a href="add_user.php"></a>Afficher</button>
+<button><a href="afficher.php">Afficher</a></button>
 </form>
    
     

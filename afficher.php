@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>Afficher la table users</head>
@@ -16,6 +17,8 @@
    </thead>
    <tbody>
      <?php
+     require_once('add_user.php');
+     $req= $dbh -> query('SELECT * FROM user_container ORDER BY id DESC ');
       while($row = $req->fetch(PDO::FETCH_ASSOC)) : ?>;
      <tr>
        <td><?php echo htmlspecialchars($row['id']); ?></td>
@@ -23,11 +26,12 @@
        <td><?php echo htmlspecialchars($row['body']); ?></td>
        <td><?php echo htmlspecialchars($row['priority']); ?></td>
        <td><?php echo htmlspecialchars($row['type']); ?></td>
-       <td><button><a href="update.php">update</a></button></td>;
-       <td><button class= " btn btn-danger " ><a class = text-light href="delete.php?deletid=<?php echo htmlspecialchars($row['id']); ?>  ">delete</a></button></td>
+       <td><button  class = "btn btn-primary"  ><a class = text-light  href="update.php?updateid=<?php echo htmlspecialchars($row['id']);?>">update</a></button></td>;
+       <td><button class= " btn btn-danger " ><a class = text-light href="delete.php?deletid=<?php echo htmlspecialchars($row['id']); ?>  ">delete</a></button></td>;
      </tr>
      <?php endwhile; ?>
    </tbody>
+        <button><a href="form.php">Page d'inscription</a></button>
  </table>
 </body>
 </html>

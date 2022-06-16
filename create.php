@@ -4,23 +4,30 @@
 
 include_once 'add_user.php';
 
+
+
 // Insert DATA
 
+if(isset($_POST['submit'])){
+$name = $_POST['name'];
+$message = $_POST['message'];
+$priority = $_POST['priority'];
+$type = $_POST['type'];
+
+
 $sql = " INSERT INTO user_container (name,body,priority,type)
-               VALUES (?,?,?,?)";
-
-if(isset($_GET['deletid']))
-    $id=$_GET['deletid'];
-
-// Delete DATA
-
-$sql = " DELETE FROM user_container WHERE id= $id ";
+               VALUES ('$name','$message',$priority,$type)";
 $req= $dbh -> query($sql);
+
 //  while($row = $req->fetch(PDO::FETCH_ASSOC)) : ;
+
 if($req){
-    echo "Suppression réussie";
+    echo "insertion réussie";
 } else{
-    echo "Suppression échoué";
+    echo "insertion échoué";
 }
+}
+
+header('location:afficher.php');
 
 ?>

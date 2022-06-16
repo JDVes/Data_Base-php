@@ -18,13 +18,12 @@ $req= $dbh -> query($sql);
 //  while($row = $req->fetch(PDO::FETCH_ASSOC)) : ;
 if($req){
     echo "Suppression réussie";
+    header('location:afficher.php');
 } else{
     echo "Suppression échoué";
 }
+
 }
-
-
-
 
 
 
